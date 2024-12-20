@@ -1,0 +1,20 @@
+version: '3'
+services:
+  api-gateway:
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - water-service
+      - property-service
+
+  water-service:
+    build: ./water-service
+    ports:
+      - "5001:5001"
+
+  property-service:
+    build: ./property-service
+    ports:
+      - "5002:5002"
